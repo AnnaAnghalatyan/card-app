@@ -1,11 +1,16 @@
 import PropTypes from 'prop-types';
+import {CardItem, RemoveCardButton} from "./styles";
 
 function Card({card, onDelete}) {
-    return <div></div>
+    return <CardItem>
+        {card.number}
+        <RemoveCardButton onClick={() => onDelete(card.id)}>x</RemoveCardButton>
+    </CardItem>
 }
 
 Card.propTypes = {
-    card: PropTypes.object,
+    card: PropTypes.objectOf(PropTypes.any).isRequired,
+    onDelete: PropTypes.func.isRequired,
 }
 
 export default Card;
